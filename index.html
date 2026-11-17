@@ -86,7 +86,7 @@ header p{font-size:13px;color:#907B60}
   transform:rotate(180deg);
 }
 
-/* 垃圾桶 */
+/* 白色垃圾桶 */
 .delete-btn{
   position:absolute;
   right:12px;
@@ -265,6 +265,7 @@ footer{
 
 <script>
 
+// 原始行程
 const defaultTrips = [
   {name:"楠梓 TEA TOP",type:"place"},
   {name:"中壢",type:"place"},
@@ -273,6 +274,7 @@ const defaultTrips = [
   {name:"回家",type:"home"}
 ];
 
+// 讀取儲存資料
 let trips;
 
 try{
@@ -288,8 +290,17 @@ try{
   trips = defaultTrips.map(t=>({...t}));
 }
 
+// 自動清除測試行程 123.
+trips = trips.filter(trip => trip.name !== "123.");
+
+localStorage.setItem(
+  "myTravelTrips",
+  JSON.stringify(trips)
+);
+
 let currentPosition = null;
 
+// 儲存
 function save(){
   localStorage.setItem(
     "myTravelTrips",
@@ -297,6 +308,7 @@ function save(){
   );
 }
 
+// 顯示行程
 function render(){
 
   const route = document.getElementById("route");
@@ -336,7 +348,7 @@ function render(){
 
     head.append(title,arrow);
 
-    // 只有額外新增的行程才顯示垃圾桶
+    // 額外新增的行程才有垃圾桶
     if(trip.custom===true){
 
       const del = document.createElement("button");
@@ -375,6 +387,7 @@ function render(){
       head.append(del);
     }
 
+    // 展開內容
     const details=document.createElement("div");
     details.className="details";
 
@@ -453,6 +466,7 @@ function render(){
   });
 }
 
+// 取得 GPS
 function getLocation(){
 
   const gps=document.getElementById("gps");
@@ -491,6 +505,7 @@ function getLocation(){
   );
 }
 
+// 開啟導航
 function navigate(destination,app){
 
   const origin=currentPosition
@@ -521,6 +536,7 @@ function navigate(destination,app){
   window.location.href=url;
 }
 
+// 新增行程
 function addPlace(){
 
   const input=document.getElementById("newPlace");
@@ -537,6 +553,7 @@ function addPlace(){
     custom:true
   };
 
+  // 永遠插入回家之前
   const homeIndex=trips.findIndex(
     t=>t.type==="home"
   );
@@ -553,12 +570,15 @@ function addPlace(){
   input.value="";
 }
 
-// Enter 也能新增
+// Enter 新增
 document.getElementById("newPlace")
-  .addEventListener("keydown",e=>{
-    if(e.key==="Enter") addPlace();
-  });
+.addEventListener("keydown",e=>{
+  if(e.key==="Enter"){
+    addPlace();
+  }
+});
 
+// 啟動網站
 render();
 
 </script>
