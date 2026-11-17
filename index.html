@@ -13,37 +13,15 @@ body{
   color:#514333;
   font-family:Arial,"Noto Sans TC",sans-serif;
 }
-header{
-  padding:38px 20px 25px;
-  text-align:center;
-}
-header small{
-  letter-spacing:3px;
-  color:#9B8465;
-}
+header{padding:38px 20px 25px;text-align:center}
+header small{letter-spacing:3px;color:#9B8465}
 h1{font-size:30px;margin:12px 0 8px}
 header p{font-size:13px;color:#907B60}
-.container{
-  width:min(650px,92%);
-  margin:0 auto 50px;
-}
-.summary{
-  background:#F7F0E4;
-  padding:18px;
-  border-radius:14px;
-  margin-bottom:22px;
-}
+.container{width:min(650px,92%);margin:0 auto 50px}
+.summary{background:#F7F0E4;padding:18px;border-radius:14px;margin-bottom:22px}
 .summary span{font-size:13px;color:#917B5E}
-.route{
-  display:flex;
-  flex-direction:column;
-  gap:13px;
-}
-.trip{
-  background:#F7F0E4;
-  border-radius:13px;
-  overflow:hidden;
-}
+.route{display:flex;flex-direction:column;gap:13px}
+.trip{background:#F7F0E4;border-radius:13px;overflow:hidden}
 .trip-head{
   padding:19px;
   display:flex;
@@ -52,91 +30,49 @@ header p{font-size:13px;color:#907B60}
   cursor:pointer;
 }
 .trip-head strong{font-size:16px}
-.trip-head small{
-  display:block;
-  color:#A18A6B;
-  font-size:11px;
-  margin-bottom:5px;
-}
+.trip-head small{display:block;color:#A18A6B;font-size:11px;margin-bottom:5px}
 .arrow{transition:.2s;color:#927A59}
 .trip.open .arrow{transform:rotate(180deg)}
-.details{
-  display:none;
-  padding:0 19px 20px;
-}
-.trip.open .details{display:block}
-.line{
-  height:1px;
-  background:#E3D5BE;
-  margin-bottom:16px;
-}
-.info{
-  font-size:13px;
-  color:#8D775A;
-  margin:13px 0 7px;
-}
-.location{
-  background:#EEE3D0;
-  padding:12px;
-  border-radius:9px;
-  font-size:14px;
-}
-.btns{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:9px;
-  margin-top:15px;
-}
-button{
+.head-actions{display:flex;align-items:center;gap:16px}
+.delete-btn{
+  width:34px;
+  height:34px;
+  padding:5px;
+  margin:0;
   border:0;
-  border-radius:9px;
-  padding:12px 8px;
-  font-size:13px;
+  background:transparent;
+  display:flex;
+  align-items:center;
+  justify-content:center;
   cursor:pointer;
 }
-.main-btn{
-  background:#78664C;
-  color:white;
+.delete-btn svg{
+  width:21px;
+  height:21px;
+  stroke:#ffffff;
+  stroke-width:2;
+  fill:none;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+  filter:drop-shadow(0 1px 2px #9b8465);
 }
-.map-btn{
-  background:#E8DCC6;
-  color:#594A35;
-}
-.route-distance{
-  text-align:center;
-  padding:3px 0;
-  color:#907B60;
-  font-size:12px;
-}
-.add-panel{
-  background:#F7F0E4;
-  border-radius:13px;
-  padding:20px;
-  margin-top:20px;
-}
+.delete-btn:active{transform:scale(.88)}
+.details{display:none;padding:0 19px 20px}
+.trip.open .details{display:block}
+.line{height:1px;background:#E3D5BE;margin-bottom:16px}
+.info{font-size:13px;color:#8D775A;margin:13px 0 7px}
+.location{background:#EEE3D0;padding:12px;border-radius:9px;font-size:14px}
+.btns{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:15px}
+button{border:0;border-radius:9px;padding:12px 8px;font-size:13px;cursor:pointer}
+.main-btn{background:#78664C;color:white}
+.map-btn{background:#E8DCC6;color:#594A35}
+.route-distance{text-align:center;padding:3px 0;color:#907B60;font-size:12px}
+.add-panel{background:#F7F0E4;border-radius:13px;padding:20px;margin-top:20px}
 .add-panel h3{margin:0 0 15px}
-input{
-  width:100%;
-  padding:13px;
-  border:1px solid #DCCDB4;
-  background:#FBF7EF;
-  border-radius:9px;
-  color:#514333;
-  font-size:14px;
-  margin-bottom:10px;
-}
+input{width:100%;padding:13px;border:1px solid #DCCDB4;background:#FBF7EF;border-radius:9px;color:#514333;font-size:14px;margin-bottom:10px}
 .add-panel button{width:100%}
-footer{
-  text-align:center;
-  font-size:11px;
-  color:#A18B6B;
-  padding:25px;
-}
-.status{
-  font-size:12px;
-  color:#907B60;
-  margin-top:12px;
-}
+footer{text-align:center;font-size:11px;color:#A18B6B;padding:25px}
+.status{font-size:12px;color:#907B60;margin-top:12px}
 @media(max-width:480px){
   header{padding-top:28px}
   h1{font-size:26px}
@@ -144,7 +80,6 @@ footer{
 }
 </style>
 </head>
-
 <body>
 
 <header>
@@ -154,7 +89,6 @@ footer{
 </header>
 
 <main class="container">
-
   <section class="summary">
     <span>MY TRAVEL ROUTE</span>
     <h3 id="count">共 5 個行程站點</h3>
@@ -175,20 +109,17 @@ footer{
     <button class="main-btn" onclick="getLocation()">取得我的目前位置</button>
     <p class="status" id="gps">尚未取得定位</p>
   </section>
-
 </main>
 
-<footer>
-  EVERY JOURNEY HAS A STORY.
-</footer>
+<footer>EVERY JOURNEY HAS A STORY.</footer>
 
 <script>
 const defaultTrips = [
-  {name:"楠梓 TEA TOP",type:"place"},
-  {name:"中壢",type:"place"},
-  {name:"淡水",type:"place"},
-  {name:"休息",type:"rest"},
-  {name:"回家",type:"home"}
+  {name:"楠梓 TEA TOP",type:"place",custom:false},
+  {name:"中壢",type:"place",custom:false},
+  {name:"淡水",type:"place",custom:false},
+  {name:"休息",type:"rest",custom:false},
+  {name:"回家",type:"home",custom:false}
 ];
 
 let trips;
@@ -196,10 +127,16 @@ let trips;
 try {
   const saved = JSON.parse(localStorage.getItem("myTravelTrips"));
   trips = Array.isArray(saved) && saved.length
-    ? saved : defaultTrips;
+    ? saved : defaultTrips.map(t=>({...t}));
 } catch {
-  trips = defaultTrips;
+  trips = defaultTrips.map(t=>({...t}));
 }
+
+// 舊版本新增的行程也視為自訂行程
+trips = trips.map(t=>({
+  ...t,
+  custom: t.custom === true
+}));
 
 let currentPosition = null;
 
@@ -208,167 +145,204 @@ function save(){
 }
 
 function render(){
-  const route = document.getElementById("route");
-  route.innerHTML = "";
+  const route=document.getElementById("route");
+  route.innerHTML="";
 
-  document.getElementById("count").textContent =
-    "共 " + trips.length + " 個行程站點";
+  document.getElementById("count").textContent=
+    "共 "+trips.length+" 個行程站點";
 
   trips.forEach((trip,index)=>{
-    const isSpecial = trip.type === "rest";
-    const isHome = trip.type === "home";
+    const isSpecial=trip.type==="rest";
+    const isHome=trip.type==="home";
 
-    const card = document.createElement("article");
-    card.className = "trip";
+    const card=document.createElement("article");
+    card.className="trip";
 
-    const head = document.createElement("div");
-    head.className = "trip-head";
+    const head=document.createElement("div");
+    head.className="trip-head";
 
-    const title = document.createElement("div");
-    const small = document.createElement("small");
-    small.textContent = "STOP " + String(index+1).padStart(2,"0");
+    const title=document.createElement("div");
+    const small=document.createElement("small");
+    small.textContent="STOP "+String(index+1).padStart(2,"0");
 
-    const strong = document.createElement("strong");
-    strong.textContent =
-      trip.name + (isSpecial ? " ☕" : isHome ? " 🏠" : "");
+    const strong=document.createElement("strong");
+    strong.textContent=trip.name+(isSpecial?" ☕":isHome?" 🏠":"");
 
     title.append(small,strong);
 
-    const arrow = document.createElement("span");
-    arrow.className = "arrow";
-    arrow.textContent = "⌄";
+    const actions=document.createElement("div");
+    actions.className="head-actions";
 
-    head.append(title,arrow);
+    // 只有額外新增的行程才顯示垃圾桶
+    if(trip.custom===true){
+      const deleteBtn=document.createElement("button");
+      deleteBtn.className="delete-btn";
+      deleteBtn.title="刪除行程";
+      deleteBtn.setAttribute("aria-label","刪除"+trip.name);
+      deleteBtn.innerHTML=`
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M3 6h18"/>
+          <path d="M8 6V4h8v2"/>
+          <path d="M19 6l-1 14H6L5 6"/>
+          <path d="M10 11v5M14 11v5"/>
+        </svg>`;
+      deleteBtn.onclick=(event)=>{
+        event.stopPropagation();
+        deletePlace(index);
+      };
+      actions.append(deleteBtn);
+    }
+
+    const arrow=document.createElement("span");
+    arrow.className="arrow";
+    arrow.textContent="⌄";
+    actions.append(arrow);
+
+    head.append(title,actions);
     card.append(head);
 
-    const details = document.createElement("div");
-    details.className = "details";
+    const details=document.createElement("div");
+    details.className="details";
 
-    const line = document.createElement("div");
-    line.className = "line";
+    const line=document.createElement("div");
+    line.className="line";
     details.append(line);
 
     if(isSpecial){
-      const note = document.createElement("div");
-      note.className = "location";
-      note.textContent = "休息時間，自由安排。";
+      const note=document.createElement("div");
+      note.className="location";
+      note.textContent="休息時間，自由安排。";
       details.append(note);
     }else{
-      const info1 = document.createElement("div");
-      info1.className = "info";
-      info1.textContent = "目前位置";
+      const info1=document.createElement("div");
+      info1.className="info";
+      info1.textContent="目前位置";
 
-      const origin = document.createElement("div");
-      origin.className = "location";
-      origin.textContent = currentPosition
-        ? "已取得目前 GPS 位置"
-        : "請先取得我的目前位置";
+      const origin=document.createElement("div");
+      origin.className="location";
+      origin.textContent=currentPosition
+        ?"已取得目前 GPS 位置"
+        :"請先取得我的目前位置";
 
-      const info2 = document.createElement("div");
-      info2.className = "info";
-      info2.textContent = "目的地";
+      const info2=document.createElement("div");
+      info2.className="info";
+      info2.textContent="目的地";
 
-      const destination = document.createElement("div");
-      destination.className = "location";
-      destination.textContent = trip.name;
+      const destination=document.createElement("div");
+      destination.className="location";
+      destination.textContent=trip.name;
 
       details.append(info1,origin,info2,destination);
 
-      const btns = document.createElement("div");
-      btns.className = "btns";
+      const btns=document.createElement("div");
+      btns.className="btns";
 
-      const google = document.createElement("button");
-      google.className = "map-btn";
-      google.textContent = "Google Maps";
-      google.onclick = ()=>navigate(trip.name,"google");
+      const google=document.createElement("button");
+      google.className="map-btn";
+      google.textContent="Google Maps";
+      google.onclick=()=>navigate(trip.name,"google");
 
-      const apple = document.createElement("button");
-      apple.className = "map-btn";
-      apple.textContent = "Apple 地圖";
-      apple.onclick = ()=>navigate(trip.name,"apple");
+      const apple=document.createElement("button");
+      apple.className="map-btn";
+      apple.textContent="Apple 地圖";
+      apple.onclick=()=>navigate(trip.name,"apple");
 
       btns.append(google,apple);
       details.append(btns);
     }
 
-    head.onclick = ()=>card.classList.toggle("open");
-
+    head.onclick=()=>card.classList.toggle("open");
     card.append(details);
     route.append(card);
 
-    if(index < trips.length-1){
-      const distance = document.createElement("div");
-      distance.className = "route-distance";
-      distance.textContent = "↓ 前往下一站";
+    if(index<trips.length-1){
+      const distance=document.createElement("div");
+      distance.className="route-distance";
+      distance.textContent="↓ 前往下一站";
       route.append(distance);
     }
   });
 }
 
-function getLocation(){
-  const gps = document.getElementById("gps");
+function deletePlace(index){
+  const trip=trips[index];
 
-  if(!navigator.geolocation){
-    gps.textContent = "此瀏覽器不支援定位。";
+  if(!trip||trip.custom!==true)return;
+
+  if(!confirm("確定要刪除「"+trip.name+"」這個行程嗎？")){
     return;
   }
 
-  gps.textContent = "正在取得定位……";
+  trips.splice(index,1);
+  save();
+  render();
+}
+
+function getLocation(){
+  const gps=document.getElementById("gps");
+
+  if(!navigator.geolocation){
+    gps.textContent="此瀏覽器不支援定位。";
+    return;
+  }
+
+  gps.textContent="正在取得定位……";
 
   navigator.geolocation.getCurrentPosition(
     position=>{
-      currentPosition = {
+      currentPosition={
         lat:position.coords.latitude,
         lng:position.coords.longitude
       };
-
-      gps.textContent = "定位成功！已取得目前位置。";
+      gps.textContent="定位成功！已取得目前位置。";
       render();
     },
     error=>{
-      gps.textContent =
-        "定位失敗，請確認瀏覽器已允許位置權限。";
+      gps.textContent="定位失敗，請確認瀏覽器已允許位置權限。";
     },
     {enableHighAccuracy:true,timeout:15000}
   );
 }
 
 function navigate(destination,app){
-  let origin = currentPosition
-    ? currentPosition.lat + "," + currentPosition.lng
-    : "";
+  let origin=currentPosition
+    ?currentPosition.lat+","+currentPosition.lng
+    :"";
 
-  const encoded = encodeURIComponent(destination);
-
+  const encoded=encodeURIComponent(destination);
   let url;
 
-  if(app === "google"){
-    url = "https://www.google.com/maps/dir/?api=1"
-      + (origin ? "&origin="+encodeURIComponent(origin) : "")
-      + "&destination="+encoded
-      + "&travelmode=driving";
+  if(app==="google"){
+    url="https://www.google.com/maps/dir/?api=1"
+      +(origin?"&origin="+encodeURIComponent(origin):"")
+      +"&destination="+encoded
+      +"&travelmode=driving";
   }else{
-    url = "https://maps.apple.com/?daddr="+encoded
-      + (origin ? "&saddr="+encodeURIComponent(origin) : "");
+    url="https://maps.apple.com/?daddr="+encoded
+      +(origin?"&saddr="+encodeURIComponent(origin):"");
   }
 
-  window.location.href = url;
+  window.location.href=url;
 }
 
 function addPlace(){
-  const input = document.getElementById("newPlace");
-  const name = input.value.trim();
+  const input=document.getElementById("newPlace");
+  const name=input.value.trim();
 
   if(!name){
     alert("請輸入目的地！");
     return;
   }
 
-  const homeIndex = trips.findIndex(t=>t.type==="home");
+  const newTrip={
+    name:name,
+    type:"place",
+    custom:true
+  };
 
-  const newTrip = {name:name,type:"place"};
+  const homeIndex=trips.findIndex(t=>t.type==="home");
 
-  if(homeIndex === -1){
+  if(homeIndex===-1){
     trips.push(newTrip);
   }else{
     trips.splice(homeIndex,0,newTrip);
@@ -376,11 +350,10 @@ function addPlace(){
 
   save();
   render();
-  input.value = "";
+  input.value="";
 }
 
 render();
 </script>
-
 </body>
 </html>
